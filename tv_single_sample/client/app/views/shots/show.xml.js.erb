@@ -1,13 +1,12 @@
 var Template = function() { return `<?xml version="1.0" encoding="UTF-8" ?>
   <document>
-    <oneupTemplate mode="oneup caption" allowsZooming="true">
+    <oneupTemplate mode="oneup caption" allowsZooming="false">
       <section>
         <lockup>
-          <img src="path to images on your server/Car_Movie_1920x1080.png" />
-          <title>WWDC Roadtrip</title>
+          <img src="<%= @shot["image_url"] %>" />
+          <title><%= @shot["title"] %></title>
           <row>
-            <subtitle>San Francisco</subtitle>
-            <subtitle>June 8, 2015</subtitle>
+            <subtitle><%= @shot["player"]["name"] %></subtitle>
           </row>
         </lockup>
       </section>

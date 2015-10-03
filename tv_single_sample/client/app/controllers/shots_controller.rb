@@ -25,6 +25,16 @@ class ShotsController < ApplicationController
   # GET /shots/1
   # GET /shots/1.json
   def show
+    res = open("http://api.dribbble.com/shots/#{params[:id]}")
+    code, message = res.status # res.status => ["200", "OK"]
+
+    if code == '200'
+      result = ActiveSupport::JSON.decode res.read
+      @shot = result
+    else
+      puts "#{code} #{message}"
+    end
+
     render "show.xml.js"
   end
 

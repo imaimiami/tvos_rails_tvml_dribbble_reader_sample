@@ -9,7 +9,7 @@ var Template = function() { return `<?xml version="1.0" encoding="UTF-8" ?>
           <shelf>
             <section>
                 <% shots.each do |shot| %>
-                <lockup>
+                <lockup template="${this.BASEURL}shots/<%= shot["id"] %>">
                   <img src="<%= shot["image_url"] %>" height="200" width="200"/>
                   <title><%= shot["title"] %></title>
                 </lockup>
