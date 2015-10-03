@@ -2,41 +2,21 @@ var Template = function() { return `<?xml version="1.0" encoding="UTF-8" ?>
   <document>
     <stackTemplate>
       <banner>
-        <title>Dribbble popular shots</title>
+        <title>Dribbble Popular Shots</title>
       </banner>
       <collectionList>
-         <shelf>
+        <% @shot_shelfs.each do |shots| %>
+          <shelf>
             <section>
-               <lockup>
-                  <img src="path to images on your server/Car_Movie_250x375_A.png" width="182" height="274" />
-                  <title>Movie 1</title>
-               </lockup>
-               <lockup>
-                  <img src="path to images on your server/Car_Movie_250x375_B.png" width="182" height="274" />
-                  <title>Movie 2</title>
-               </lockup>
-               <lockup>
-                  <img src="path to images on your server/Car_Movie_250x375_C.png" width="182" height="274" />
-                  <title>Movie 3</title>
-               </lockup>
+                <% shots.each do |shot| %>
+                <lockup>
+                  <img src="<%= shot["image_url"] %>" height="200" width="200"/>
+                  <title><%= shot["title"] %></title>
+                </lockup>
+              <% end %>
             </section>
-         </shelf>
-         <shelf>
-            <section>
-               <lockup>
-                  <img src="path to images on your servers/Space_Movie/Space_Movie_250x375_B.png" width="182" height="274"></img>
-                  <title>Movie 4</title>
-               </lockup>
-               <lockup>
-                  <img src="path to images on your server/Space_Movie/Space_Movie_250x375_A.png" width="182" height="274"></img>
-                  <title>Movie 5</title>
-               </lockup>
-               <lockup>
-                  <img src="path to images on your server/Space_Movie/Space_Movie_250x375_C.png" width="182" height="274"></img>
-                  <title>Movie 6</title>
-               </lockup>
-            </section>
-         </shelf>
+          </shelf>
+        <% end %>
       </collectionList>
     </stackTemplate>
   </document>`

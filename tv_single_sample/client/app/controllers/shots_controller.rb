@@ -1,9 +1,24 @@
+require 'open-uri'
+
 class ShotsController < ApplicationController
   before_action :set_shot, only: [:show, :edit, :update, :destroy]
 
   # GET /shots
   # GET /shots.json
   def index
+    @shot_shelfs = []
+    (1..5).each do |page|
+      res = open("http://api.dribbble.com/shots/popular?page=#{page}")
+      code, message = res.status # res.status => ["200", "OK"]
+      
+      if code == '200'
+        result = ActiveSupport::JSON.decode res.read
+        @shot_shelfs << result["shots"]
+      else
+        puts "#{code} #{message}"
+      end
+    end
+
     render "index.xml.js"
   end
 
