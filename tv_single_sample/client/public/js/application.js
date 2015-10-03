@@ -12,7 +12,7 @@ App.onLaunch = function(options) {
 			resourceLoader.loadResource(`${options.BASEURL}shots`, function(resource) {
 				var doc = Presenter.makeDocument(resource);
 				doc.addEventListener("select", Presenter.load.bind(Presenter));
-				Presenter.pushDocument(doc);
+				Presenter.defaultPresenter(doc);
 			})
 		} else {
 			var errorDoc = createAlert("Evaluate Scripts Error", "Error attempting to evaluate external JavaScript files.");

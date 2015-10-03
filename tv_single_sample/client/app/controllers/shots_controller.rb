@@ -10,7 +10,7 @@ class ShotsController < ApplicationController
     (1..5).each do |page|
       res = open("http://api.dribbble.com/shots/popular?page=#{page}")
       code, message = res.status # res.status => ["200", "OK"]
-      
+
       if code == '200'
         result = ActiveSupport::JSON.decode res.read
         @shot_shelfs << result["shots"]
@@ -25,6 +25,7 @@ class ShotsController < ApplicationController
   # GET /shots/1
   # GET /shots/1.json
   def show
+    render "show.xml.js"
   end
 
   # GET /shots/new
