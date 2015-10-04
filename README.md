@@ -1,1 +1,3 @@
-# tvos_rails_tvml_dribbble_reader_sample
+# tvOS dribbble reader sample with Rails, TVML
+
+blog post: http://www.imaimiami.com/tvml-rails-app/
